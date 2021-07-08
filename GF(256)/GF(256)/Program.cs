@@ -91,8 +91,8 @@ namespace GF_256_
                 {
                     if (Division(i, j) == 0)
                     {
-                        flag = false;                                            
-                        j = 34;
+                        flag = false;
+                        break; ;
                     }                       
                 }
                 if (flag && Monom_odd_check(i))
