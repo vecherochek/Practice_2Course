@@ -68,12 +68,12 @@ namespace GF_256_
 
             for (int i = 6; i >= 0; i--)                // 1[1111110]
             {
-                if ((254 & (1 << i)) > 0)               //1
+                if ((254 & (1 << i)) > 0)               
                 {
                     res = Multiply(res, res, modulo);
                     res = Multiply(res, poly_a, modulo);
                 }
-                else                                    //0
+                else                                    
                 {
                     res = Multiply(res, res, modulo);
                 }
@@ -115,7 +115,6 @@ namespace GF_256_
             else return false;   
         }
     }
-
     class Program
     {
         static void Main(string[] args)
@@ -123,13 +122,16 @@ namespace GF_256_
             GaloisField T = new GaloisField();
             byte    a = 50;
             byte    b = 249;
+            byte    c = 15;
             ushort  modulo = 283;
 
             Console.WriteLine($"{a} + {b} = {T.Add(a, b)}");
             Console.WriteLine($"{a} * {b} = {T.Multiply(a, b, modulo)}");
-            Console.WriteLine($"{a} ^(-1) = {T.Inverse(a, modulo)}");
-            Console.WriteLine($"{a} ^(-1) * {a} = {T.Multiply(a, T.Inverse(a, modulo), modulo)}");
 
+            Console.WriteLine($"{c} ^(-1) = {T.Inverse(c, modulo)}");
+            Console.WriteLine($"{c} ^(-1) * {c} = {T.Multiply(c, T.Inverse(c, modulo), modulo)}");
+
+            Console.WriteLine("\nAll irreducible polynomials: ");
             T.AllIrreduciblePolynomials();
         }
     }

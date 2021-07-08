@@ -5,3 +5,10 @@ C:\Users\pbure\source\repos\GF(256)\GF(256)\obj\Debug\GF(256).csprojAssemblyRefe
 C:\Users\pbure\source\repos\GF(256)\GF(256)\obj\Debug\GF(256).csproj.CoreCompileInputs.cache
 C:\Users\pbure\source\repos\GF(256)\GF(256)\obj\Debug\GF(256).exe
 C:\Users\pbure\source\repos\GF(256)\GF(256)\obj\Debug\GF(256).pdb
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\bin\Debug\GF(256).exe.config
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\bin\Debug\GF(256).exe
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\bin\Debug\GF(256).pdb
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\obj\Debug\GF(256).csprojAssemblyReference.cache
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\obj\Debug\GF(256).csproj.CoreCompileInputs.cache
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\obj\Debug\GF(256).exe
+C:\Users\pbure\Source\Repos\vecherochek\Practice_2Course\GF(256)\GF(256)\obj\Debug\GF(256).pdb
