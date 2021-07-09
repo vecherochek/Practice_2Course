@@ -56,11 +56,17 @@ namespace problem_3
         {
             TimeSpan timelife = new TimeSpan(0, 0, 30);
             Cache<string> cache = new Cache<string>(timelife, 5);
-
-            cache.Save("123", "qwerty");
-            cache.Save("135", "asd");
-            cache.Save("1357", "gfdsgfd");
-            cache.Save("135gg", "64646");
+            try
+            {
+                cache.Save("123", "qwerty");
+                cache.Save("135", "asd");
+                cache.Save("135", "gfdsgfd");
+                cache.Save("135gg", "64646");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
