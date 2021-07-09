@@ -59,7 +59,7 @@ namespace problem_3
 
             cache.Save("123", "qwerty");
             cache.Save("135", "asd");
-            cache.Save("135", "gfdsgfd");
+            cache.Save("1357", "gfdsgfd");
             cache.Save("135gg", "64646");
         }
     }
