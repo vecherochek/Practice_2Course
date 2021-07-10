@@ -26,12 +26,12 @@ namespace GF_256_
             }
             return degree;
         }
-        public byte Division(ushort poly_a, byte poly_b)
+        public byte Division(ushort poly_a, ushort poly_b)
         {
             byte    degree_a = Degree(poly_a);
             byte    degree_b = Degree(poly_b);
 
-            while (degree_a >= degree_b)
+            while (degree_a > degree_b - 1)
             {
                 int i = degree_a - degree_b;
                 poly_a ^= (ushort)((poly_b << i));
@@ -42,7 +42,6 @@ namespace GF_256_
         public byte Multiply(byte poly_a, byte poly_b, ushort modulo)
         {
             ushort  multiply_polynomials = 0;
-            byte    degree;
 
             for (int i = 14; i >= 0; i--)
             {
@@ -51,16 +50,7 @@ namespace GF_256_
                     multiply_polynomials ^= (ushort)((poly_b << i));
                 }
             }
-
-            degree = Degree(multiply_polynomials);
-
-            while (degree > 7)
-            {
-                int i = degree - 8;
-                multiply_polynomials ^= (ushort)((modulo << i));
-                degree = Degree(multiply_polynomials);
-            }
-            return (byte)multiply_polynomials;
+            return Division(multiply_polynomials, modulo);
         }
         public byte Inverse(byte poly_a, ushort modulo)
         {
@@ -68,22 +58,18 @@ namespace GF_256_
 
             for (int i = 6; i >= 0; i--)                // 1[1111110]
             {
-                if ((254 & (1 << i)) > 0)               
-                {
-                    res = Multiply(res, res, modulo);
+                res = Multiply(res, res, modulo);
+                if ((254 & (1 << i)) > 0)                                  
                     res = Multiply(res, poly_a, modulo);
-                }
-                else                                    
-                {
-                    res = Multiply(res, res, modulo);
-                }
+ 
             }
             return res;
         }
-        public void AllIrreduciblePolynomials()
+        public List<ushort> AllIrreduciblePolynomials()
         {
-            int     count = 0;
-            bool    flag = true;
+            bool            flag;
+            List<ushort>    polynomials = new List<ushort>();
+
             for (ushort i = 257; i < 512; i += 2)
             {
                 flag = true;
@@ -97,11 +83,21 @@ namespace GF_256_
                 }
                 if (flag && Monom_odd_check(i))
                 {
-                    count++;
-                    Console.WriteLine(count + ". " + i);
+                    polynomials.Add(i);
                 }
             }
+            return polynomials;
         }
+
+        public void PrintAllIrreduciblePolynomials(List<ushort> Polynomials)
+        {
+            Console.WriteLine("\nAll irreducible polynomials: ");
+            for (int i = 0; i < Polynomials.Count; i++)
+            {
+                Console.WriteLine(i + ". " + Polynomials[i]);
+            }
+        }
+
         public bool Monom_odd_check(ushort poly_a)
         {
             int     count = 0;
@@ -119,20 +115,19 @@ namespace GF_256_
     {
         static void Main(string[] args)
         {
+            byte        a = 50;
+            byte        b = 249;
+            byte        c = 15;
+            ushort      modulo = 283;
             GaloisField T = new GaloisField();
-            byte    a = 50;
-            byte    b = 249;
-            byte    c = 15;
-            ushort  modulo = 283;
 
             Console.WriteLine($"{a} + {b} = {T.Add(a, b)}");
             Console.WriteLine($"{a} * {b} = {T.Multiply(a, b, modulo)}");
 
             Console.WriteLine($"{c} ^(-1) = {T.Inverse(c, modulo)}");
             Console.WriteLine($"{c} ^(-1) * {c} = {T.Multiply(c, T.Inverse(c, modulo), modulo)}");
-
-            Console.WriteLine("\nAll irreducible polynomials: ");
-            T.AllIrreduciblePolynomials();
+           
+            T.PrintAllIrreduciblePolynomials(T.AllIrreduciblePolynomials());
         }
     }
 }
