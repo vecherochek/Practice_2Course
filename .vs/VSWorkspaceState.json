@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\GF(256)"
   ],
+  "SelectedNode": "\\GF(256)\\GF(256).sln",
   "PreviewInSolutionExplorer": false
 }

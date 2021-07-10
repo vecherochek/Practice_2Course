@@ -71,7 +71,9 @@ namespace GF_256_
             List<ushort>    polynomials = new List<ushort>();
 
             for (ushort i = 257; i < 512; i += 2)
-            {
+            {              
+                if (!Monom_odd_check(i)) continue;
+
                 flag = true;
                 for (byte j = 3; j < 32; j+=2)
                 {
@@ -81,10 +83,7 @@ namespace GF_256_
                         break; ;
                     }                       
                 }
-                if (flag && Monom_odd_check(i))
-                {
-                    polynomials.Add(i);
-                }
+                if (flag) polynomials.Add(i);
             }
             return polynomials;
         }
@@ -94,7 +93,7 @@ namespace GF_256_
             Console.WriteLine("\nAll irreducible polynomials: ");
             for (int i = 0; i < Polynomials.Count; i++)
             {
-                Console.WriteLine(i + ". " + Polynomials[i]);
+                Console.WriteLine((i + 1) + ". " + Polynomials[i]);
             }
         }
 
